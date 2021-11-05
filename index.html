@@ -1,0 +1,51 @@
+<html>
+<html>
+    <head>
+        <title>Ping Pong</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+     
+        <link rel="stylesheet" href="style.css">
+        <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js"></script>   
+
+    </head>
+    <body background="background1.jpg">
+        <center>
+            <div class="btn btn-info heading">
+              <h2>Ai Mario Game</h2>
+              <button class="btn btn-warning" data-toggle="modal" data-target="#myModal">Instructions</button>
+            </div>
+            <br><br>
+            <button class="btn btn-primary" onclick="Play_Game()" id="play_btn">Play</button>
+            <br><br>
+            <h3 id="status" class="btn btn-success"></h3>
+            <br><br>
+            <div id="canvas"></div>
+            <div id="game_console"></div>
+            <h4 id="footer">Source Code:<a href="https://mahdihat791.github.io/PingPong/">Linak</a>|| Game credit: Ping Pong</h4>
+      
+            <div id="myModal" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button class="close" data_dismiss="modal">&times;</button>
+                    <h4>Instructions</h4>
+                  </div>
+                  <div class="modal-body">
+                    <h2>Keep Your Right Wrist up and down to contro your player</h2>
+                    <img src="jump.png" class="Instruction_IMG">
+                    <br><br>
+                    <img src="right.png" class="Instruction_IMG">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-success" onclick="Restart()" id="restart_btn">Restart</button>
+          </center>
+        <script src="main.js"></script>
+    </body>
+</html>
