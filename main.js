@@ -21,14 +21,27 @@ var ball = {
     dy:3
 }
 
+RWristX=0
+RWristY=0
+score_RW=0
+
 function setup(){
   var canvas =  createCanvas(700,600);
+  canvas.parent('canvas')
+  video=createCapture(VIDEO)
+  video.size(700,600)
+  video.hide()
+
+
+  posenet=ml5.poseNet(video,modelloaded)
+  posenet.on('pose',gotResults)
 }
 
 
 function draw(){
-
- background(0); 
+  background(0); 
+  image(video,0,0,700,600)
+ 
 
  fill("black");
  stroke("black");
@@ -65,9 +78,26 @@ function draw(){
    
    //function move call which in very important
     move();
+
+  if(score_RW>0.2){
+    fill('red')
+    stroke('lightblue')
+    circle(200,200,50)
+  }
 }
 
+function modelloaded(){
+  console.log("model loaded")
+}
 
+function gotResults(results){
+  if(results.length>0){
+    console.log(results)
+    RWristX=results[0].pose.rightWrist.x
+    RWristY=results[0].pose.rightWrist.y
+    score_RW=results[0].pose.keypoints[10].score
+  }
+}
 
 //function reset when ball does notcame in the contact of padde
 function reset(){
@@ -78,7 +108,6 @@ function reset(){
    
 }
 
-
 //function midline draw a line in center
 function midline(){
     for(i=0;i<480;i+=10) {
@@ -88,7 +117,6 @@ function midline(){
     rect(width/2,y+i,10,480);
     }
 }
-
 
 //function drawScore show scores
 function drawScore(){
@@ -101,7 +129,6 @@ function drawScore(){
     text("Computer:",500,50)
     text(pcscore,555,50)
 }
-
 
 //very important function of this game
 function move(){
@@ -141,7 +168,6 @@ if(pcscore ==4){
    }   
 }
 
-
 //width height of canvas speed of ball 
 function models(){
     textSize(18);
@@ -151,7 +177,6 @@ function models(){
     text("Speed:"+abs(ball.dx),50,15);
     text("Height:"+height,235,15)
 }
-
 
 //this function help to not go te paddle out of canvas
 function paddleInCanvas(){

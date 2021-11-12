@@ -39,3 +39,8 @@
     font-size: 22px;
     margin-bottom: 20px;
 }
+
+canvas{
+    border:5px dashed aqua;
+    box-shadow: 2px 2px 2px red;
+}
