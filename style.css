@@ -44,3 +44,7 @@ canvas{
     border:5px dashed aqua;
     box-shadow: 2px 2px 2px red;
 }
+
+#rules{
+    text-align: left;
+}

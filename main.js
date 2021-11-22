@@ -24,7 +24,7 @@ var ball = {
 RWristX=0
 RWristY=0
 score_RW=0
-
+status_game=""
 function setup(){
   var canvas =  createCanvas(700,600);
   canvas.parent('canvas')
@@ -51,6 +51,10 @@ function draw(){
  stroke("black");
  rect(0,0,20,700);
  
+  if(status_game == "start"){
+    
+  }
+
    //funtion paddleInCanvas call 
    paddleInCanvas();
  
@@ -84,6 +88,11 @@ function draw(){
     stroke('lightblue')
     circle(200,200,50)
   }
+}
+
+function Play_Game(){
+  status_game="start";
+  document.getElementById("status").innerHTML="Game Is Loaded";
 }
 
 function modelloaded(){
