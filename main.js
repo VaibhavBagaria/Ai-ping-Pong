@@ -25,6 +25,12 @@ RWristX=0
 RWristY=0
 score_RW=0
 status_game=""
+function preload(){
+
+  ball_touch=loadSound("ball_touch_paddel.wav");
+  missed=loadSound("missed.wav")
+}
+
 function setup(){
   var canvas =  createCanvas(700,600);
   canvas.parent('canvas')
@@ -52,7 +58,7 @@ function draw(){
  rect(0,0,20,700);
  
   if(status_game == "start"){
-    
+
   }
 
    //funtion paddleInCanvas call 
@@ -62,7 +68,7 @@ function draw(){
    fill(250,0,0);
     stroke(0,0,250);
     strokeWeight(0.5);
-   paddle1Y = mouseY; 
+   paddle1Y = RWristY; 
    rect(paddle1X,paddle1Y,paddle1,paddle1Height,100);
    
    
@@ -88,6 +94,12 @@ function draw(){
     stroke('lightblue')
     circle(200,200,50)
   }
+}
+
+function Restart(){
+  pcscore=0
+  playerscore=0
+  loop();
 }
 
 function Play_Game(){
@@ -153,8 +165,10 @@ function move(){
   if (ball.x-2.5*ball.r/2< 0){
   if (ball.y >= paddle1Y&& ball.y <= paddle1Y + paddle1Height) {
     ball.dx = -ball.dx+0.5; 
+    ball_touch.play()
   }
   else{
+    missed.play()
     pcscore++;
     reset();
     navigator.vibrate(100);
